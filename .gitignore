@@ -1,0 +1,79 @@
+# ======================================================
+# 🌟 Node / Express / TypeScript .gitignore
+# ======================================================
+
+# --- Node dependencies ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# --- Build output ---
+dist/
+build/
+out/
+coverage/
+.venv/
+
+# --- Environment files ---
+.env
+.env.*
+!.env.example
+
+# --- Logs & temp files ---
+logs
+*.log
+*.log.*
+npm-cache/
+pids
+*.pid
+*.seed
+*.pid.lock
+tmp/
+temp/
+
+# --- TypeScript ---
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# --- OS-specific ---
+.DS_Store
+Thumbs.db
+
+# --- ESLint / Prettier cache ---
+.eslintcache
+.prettier-cache
+.prettierignore
+
+# --- Test / Coverage ---
+coverage/
+.nyc_output/
+
+# --- Debugging / Tools ---
+*.tgz
+*.orig
+*.rej
+
+# --- Docker ---
+.dockerignore
+docker-compose.override.yml
+
+# --- Optional lockfiles for multi-package managers ---
+yarn.lock
+pnpm-lock.yaml
+
+# --- Local data / uploads ---
+uploads/
+storage/
+data/
+cache/

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run Prettier + ESLint only on staged files
+echo "🔍 Running lint-staged..."
+npx lint-staged
