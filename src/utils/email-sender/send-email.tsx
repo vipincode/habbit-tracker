@@ -1,11 +1,13 @@
+import ENV from "../../config/env";
+import { VerificationEmail } from "../../emails/VerificationEmail";
 import { sendEmail } from "./resend-sender";
-import WelcomeEmail from "../../emails/welcome-email";
 
-// Send Welcome Email
-export async function sendWelcomeEmail(to: string, name: string, email: string) {
+export async function sendVerificationEmail(email: string, verificationUrl: string) {
+  const appName = ENV.APP_NAME;
+
   return sendEmail({
-    to,
-    subject: "Welcome to VipinCodeLabs 🎉",
-    react: <WelcomeEmail name={name} email={email} />,
+    to: email,
+    subject: "Verify your email address",
+    react: <VerificationEmail email={email} verificationUrl={verificationUrl} appName={appName} />,
   });
 }

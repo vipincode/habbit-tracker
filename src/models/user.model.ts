@@ -2,12 +2,17 @@ import { Schema, model, type Document } from "mongoose";
 
 // Define the User interface
 export interface IUser extends Document {
+  _id: string;
   name: string;
   username: string;
   email: string;
   password: string;
   role: "user" | "admin";
-  refreshToken: String;
+  refreshToken: String | null;
+  isVerified: boolean;
+  verificationToken?: string | null;
+  verificationTokenExpires?: Date | null;
+
   createdAt: Date;
   updatedAt: Date;
 }
@@ -15,31 +20,15 @@ export interface IUser extends Document {
 // Define the schema
 const userSchema = new Schema<IUser>(
   {
-    name: {
-      type: String,
-      required: [true, "Name is required"],
-      trim: true,
-      minlength: [2, "Name must be at least 2 characters long"],
-    },
+    name: { type: String, required: true, trim: true },
     username: { type: String, required: true, unique: true, trim: true },
-    email: {
-      type: String,
-      required: [true, "Email is required"],
-      unique: true,
-      lowercase: true,
-      match: [/^\S+@\S+\.\S+$/, "Please provide a valid email"],
-    },
-    password: {
-      type: String,
-      required: [true, "Password is required"],
-      minlength: [6, "Password must be at least 6 characters long"],
-    },
-    role: {
-      type: String,
-      enum: ["user", "admin"],
-      default: "user",
-    },
-    refreshToken: String,
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    password: { type: String, required: true },
+    role: { type: String, enum: ["user", "admin"], default: "user" },
+    isVerified: { type: Boolean, default: false },
+    verificationToken: { type: String, default: null },
+    verificationTokenExpires: { type: Date, default: null },
+    refreshToken: { type: String, default: null },
   },
   { timestamps: true }
 );

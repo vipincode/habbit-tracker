@@ -47,10 +47,12 @@ export const envSchema = z.object({
   API_KEY: z.string().optional(),
 
   // JWT & Auth
-  JWT_SECRET: z.string().min(32, "JWT_SECRET must be at least 32 characters"),
-  JWT_EXPIRES_IN: z.string().default("7d"),
-  REFRESH_TOKEN_SECRET: z.string().min(32).optional(),
-  REFRESH_TOKEN_EXPIRES_IN: z.string().default("30d"),
+  ACCESS_TOKEN_SECRET: z.string().min(32, "JWT_SECRET must be at least 32 characters"),
+  ACCESS_TOKEN_EXPIRES_IN: z.string().default("15m"),
+  REFRESH_TOKEN_SECRET: z.string().min(32).min(32, "JWT_SECRET must be at least 32 characters"),
+  REFRESH_TOKEN_EXPIRES_IN: z.string().default("7d"),
+  COOKIE_DOMAIN: z.string().optional(),
+  COOKIE_SECURE: z.string().optional(),
 
   // Rate limiting
   RATE_LIMIT_WINDOW_MS: z
@@ -76,6 +78,8 @@ export const envSchema = z.object({
   RATE_LIMIT_MAX_REQUESTS: z.string().default("100").transform(Number),
 
   RESEND_API_KEY: z.string(),
+  FRONTEND_URL: z.string(),
+  APP_NAME: z.string(),
 });
 
 export type EnvType = z.infer<typeof envSchema>;
