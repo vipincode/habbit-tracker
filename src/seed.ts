@@ -1,6 +1,5 @@
 import { connectDB } from "./config/db";
 import { User } from "./models/user.model";
-import { ENV } from "./config/env";
 import bcrypt from "bcrypt";
 
 async function seed() {
@@ -18,12 +17,14 @@ async function seed() {
     const users = [
       {
         name: "Admin User",
+        username: "admin",
         email: "admin@example.com",
         password: passwordHash,
         role: "admin",
       },
       {
         name: "John Doe",
+        username: "john",
         email: "john@example.com",
         password: passwordHash,
         role: "user",
