@@ -180,8 +180,6 @@ export const refresh = async (req: Request, res: Response, next: NextFunction) =
     const decoded = await verifyRefreshToken(cookieToken);
     const userId = decoded.sub as string;
 
-    console.log(userId, "userId");
-
     const user = await User.findById(userId);
     if (!user || user.refreshToken !== cookieToken) {
       if (user) {

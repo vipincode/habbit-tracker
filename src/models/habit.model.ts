@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 import { IUser } from "./user.model";
 
 export interface IHabit extends Document {
-  userId: IUser["_id"];
+  userId: Schema.Types.ObjectId;
   name: string;
   description?: string;
   frequency: "daily" | "weekly" | "monthly";
