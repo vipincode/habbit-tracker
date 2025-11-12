@@ -7,5 +7,9 @@ import { protect } from "../middlewares/protected.middleware";
 const router = Router();
 
 router.post("/", protect, validateBody(validation.habitSchema), habit.createHabit);
+router.get("/", protect, habit.getAllHabit);
+router.get("/:id", protect, habit.getOneHabit);
+router.get("/:id", protect, habit.updateHabit);
+router.get("/:id", protect, habit.deleteHabit);
 
 export default router;

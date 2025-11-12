@@ -1,13 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { IUser } from "../models/user.model";
 
-export const createUser = async (
-  req: Request<{}, {}, IUser>,
-  res: Response,
-  next: NextFunction
-) => {
+export const me = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { email, username } = req.body;
   } catch (error) {
     next(error);
   }

@@ -37,3 +37,35 @@ export const createHabit = async (
     next(error);
   }
 };
+
+export const getAllHabit = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.status(200).json({ message: "Get all habit" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getOneHabit = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.status(200).json({ message: "Get one habit" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateHabit = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.status(200).json({ message: "Habit updated successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteHabit = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.status(200).json({ message: "Habit deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
