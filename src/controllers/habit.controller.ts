@@ -13,7 +13,7 @@ export const createHabit = async (
       throw CustomError.Unauthorized("User not authenticated");
     }
 
-    const userId = req.user?.id;
+    const userId = req.user.id;
     const { name, description, frequency, targetCount } = req.body;
 
     const habit = await Habit.create({
